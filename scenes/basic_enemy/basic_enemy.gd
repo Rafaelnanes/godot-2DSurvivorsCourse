@@ -12,7 +12,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var player_direction = get_direction_to_player() 
+	var player_direction = get_direction_to_player()
 	velocity = player_direction * MAX_SPEED
 	move_and_slide()
 
@@ -22,7 +22,3 @@ func get_direction_to_player() -> Vector2:
 	if player_node == null:
 		return Vector2.ZERO
 	return (player_node.global_position - global_position).normalized()
-
-
-func _on_area_2d_area_entered(area):
-	pass # Replace with function body.
