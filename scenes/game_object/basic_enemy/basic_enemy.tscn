@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://b75fajhcocgdm" path="res://scenes/game_object/basic_enemy/enemy.png" id="1_jdwbu"]
 [ext_resource type="PackedScene" uid="uid://dmh3de6op82t" path="res://scenes/component/health_component.tscn" id="2_u25yk"]
 [ext_resource type="PackedScene" uid="uid://tt3vux5n65fv" path="res://scenes/component/vial_drop_component.tscn" id="3_o8uji"]
-[ext_resource type="PackedScene" uid="uid://b1s3h635ilp4s" path="res://scenes/game_object/experience_vial/experience_vial.tscn" id="4_g5f3l"]
+[ext_resource type="PackedScene" uid="uid://dvxgyp2i3s3sl" path="res://scenes/component/hurtbox_component.tscn" id="4_0f2ly"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ynjts"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_gnyqi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x1qwn"]
 radius = 8.0
@@ -20,15 +20,13 @@ script = ExtResource("1_gjc8p")
 [node name="HealthComponent" parent="." instance=ExtResource("2_u25yk")]
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_o8uji")]
-vial_scene = ExtResource("4_g5f3l")
 health_component = NodePath("../HealthComponent")
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_0f2ly")]
+health_component = NodePath("../HealthComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("CircleShape2D_ynjts")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("CircleShape2D_gnyqi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_jdwbu")

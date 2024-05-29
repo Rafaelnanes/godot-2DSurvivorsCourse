@@ -4,14 +4,6 @@ const MAX_SPEED = 75
 
 @onready var health_component: HealthComponent = $HealthComponent 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	$Area2D.area_entered.connect(func(area2D: Area2D):
-		health_component.damage(100)
-		queue_free()
-	)
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var player_direction = get_direction_to_player()
