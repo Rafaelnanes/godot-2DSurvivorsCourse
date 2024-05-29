@@ -1,24 +1,32 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0bq7ykovrrae"]
+[gd_scene load_steps=11 format=3 uid="uid://b0bq7ykovrrae"]
 
 [ext_resource type="PackedScene" uid="uid://cmjeu33ymwfb0" path="res://scenes/ui/arena_timer_ui.tscn" id="1_34hfs"]
 [ext_resource type="TileSet" uid="uid://b8gudjpmw2b5y" path="res://resources/tileset.tres" id="1_c8c4k"]
 [ext_resource type="PackedScene" uid="uid://crwd3g0fd4m0i" path="res://scenes/manager/enemy_manager.tscn" id="1_gd1ig"]
 [ext_resource type="PackedScene" uid="uid://dhkxgpsh7lrxe" path="res://scenes/game_object/player/player.tscn" id="1_moxwb"]
 [ext_resource type="PackedScene" uid="uid://cpsngxjvxbp1y" path="res://scenes/game_object/game_camera/game_camera.tscn" id="1_rpgvc"]
+[ext_resource type="PackedScene" uid="uid://c2ldq4nyt31go" path="res://scenes/ui/experience_bar.tscn" id="2_mwr1y"]
 [ext_resource type="PackedScene" uid="uid://dmq7kpu5j7ql5" path="res://scenes/manager/arena_timer_manager.tscn" id="2_sl2xl"]
 [ext_resource type="PackedScene" uid="uid://cpu6oxfpwhmsa" path="res://scenes/manager/experience_manager.tscn" id="4_lr6u7"]
 [ext_resource type="PackedScene" uid="uid://b1s3h635ilp4s" path="res://scenes/game_object/experience_vial/experience_vial.tscn" id="6_grouo"]
+[ext_resource type="PackedScene" uid="uid://glerj238myut" path="res://scenes/manager/upgrade_manager.tscn" id="6_ml8ej"]
 
 [node name="Main" type="Node"]
 
 [node name="ArenaTimerUI" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("1_34hfs")]
 arena_time_manager = NodePath("../ArenaTimerManager")
 
+[node name="ExperienceBar" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("2_mwr1y")]
+experience_manager = NodePath("../ExperienceManager")
+
 [node name="ArenaTimerManager" parent="." instance=ExtResource("2_sl2xl")]
 
 [node name="EnemyManager" parent="." instance=ExtResource("1_gd1ig")]
 
 [node name="ExperienceManager" parent="." instance=ExtResource("4_lr6u7")]
+
+[node name="UpgradeManager" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("6_ml8ej")]
+experience_manager = NodePath("../ExperienceManager")
 
 [node name="Camera2D" parent="." instance=ExtResource("1_rpgvc")]
 
