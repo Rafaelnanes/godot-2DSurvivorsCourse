@@ -1,6 +1,9 @@
 extends Node
 
 func _ready():
-	$Area2D.area_entered.connect(func(otherArea:Area2D):
-		queue_free()
-	)
+	$Area2D.area_entered.connect(on_area_entered)
+
+
+func on_area_entered(otherArea:Area2D):
+	GameEvents.emit_experience_vial_collected(1)
+	queue_free()
